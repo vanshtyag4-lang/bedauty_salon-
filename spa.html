@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Beauty Salon & Spa</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff5f8;
+}
+
+/* HEADER */
+header {
+    background: #e91e63;
+    padding: 25px;
+    text-align: center;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* NAV */
+nav {
+    background: #c2185b;
+    text-align: center;
+    padding: 12px;
+}
+nav a {
+    color: white;
+    margin: 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+nav a:hover {
+    color: #ffe6ef;
+}
+
+/* SECTIONS */
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* SERVICES */
+.service-card {
+    width: 280px;
+    display: inline-block;
+    background: white;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #0002;
+}
+.service-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+.service-card button {
+    padding: 12px;
+    width: 100%;
+    background: #e91e63;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.service-card button:hover {
+    background: #c2185b;
+}
+
+/* GALLERY */
+.gallery img {
+    width: 260px;
+    margin: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px #0002;
+}
+
+/* POPUP */
+#popup {
+    width: 350px;
+    padding: 20px;
+    background: white;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    box-shadow: 0 0 20px #0005;
+    display: none;
+}
+#popup input, #popup select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+#popup button {
+    width: 100%;
+    padding: 12px;
+    background: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+#closeBtn {
+    background: red !important;
+}
+</style>
+</head>
+
+<body>
+
+<header>💖 Beauty Salon & Spa</header>
+
+<nav>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#booking">Book Now</a>
+</nav>
+
+<!-- SERVICES SECTION -->
+<section id="services">
+    <h2>✨ Our Beauty Services</h2>
+
+    <div class="service-card">
+        <img src="https://picsum.photos/280/180?random=1">
+        <h3>Facial Treatment</h3>
+        <p>Glow boosting deep facial treatments.</p>
+        <button onclick="openBooking('Facial Treatment')">Book Now</button>
+    </div>
+
+    <div class="service-card">
+        <img src="https://picsum.photos/280/180?random=2">
+        <h3>Hair Styling</h3>
+        <p>Professional haircut and styling.</p>
+        <button onclick="openBooking('Hair Styling')">Book Now</button>
+    </div>
+
+    <div class="service-card">
+        <img src="https://picsum.photos/280/180?random=3">
+        <h3>Manicure & Pedicure</h3>
+        <p>Relaxing nail care services.</p>
+        <button onclick="openBooking('Manicure & Pedicure')">Book Now</button>
+    </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section id="gallery">
+    <h2>📸 Before & After Gallery</h2>
+    <div class="gallery">
+        <img src="https://picsum.photos/260/200?random=10">
+        <img src="https://picsum.photos/260/200?random=11">
+        <img src="https://picsum.photos/260/200?random=12">
+        <img src="https://picsum.photos/260/200?random=13">
+    </div>
+</section>
+
+<!-- POPUP BOOKING FORM -->
+<div id="popup">
+    <h2>Book Your Appointment</h2>
+    <input type="text" id="name" placeholder="Your Name">
+    <select id="service">
+        <option>Select Service</option>
+        <option>Facial Treatment</option>
+        <option>Hair Styling</option>
+        <option>Manicure & Pedicure</option>
+    </select>
+    <input type="date" id="date">
+    <button onclick="submitBooking()">Submit</button>
+    <button id="closeBtn" onclick="closeBooking()">Close</button>
+</div>
+
+<script>
+// Open Booking Popup
+function openBooking(serviceName) {
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("service").value = serviceName;
+}
+
+// Close Popup
+function closeBooking() {
+    document.getElementById("popup").style.display = "none";
+}
+
+// Submit Booking
+function submitBooking() {
+    let name = document.getElementById("name").value;
+    let service = document.getElementById("service").value;
+    let date = document.getElementById("date").value;
+
+    if (!name || service === "Select Service" || !date) {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    alert("💖 Thank you " + name + "!\nYour booking for " + service + " on " + date + " is confirmed.");
+    closeBooking();
+}
+</script>
+
+</body>
+</html>
